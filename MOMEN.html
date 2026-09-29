@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<title>MOMEN 9B</title>
+
+<style>
+
+/* ==================================================
+   RESET
+================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+body{
+  min-height:100vh;
+  padding:18px 8px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  text-align:center;
+  color:white;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #383838 0%,
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 90% 90%,
+      #292929 0%,
+      transparent 25%
+    ),
+
+    linear-gradient(
+      135deg,
+      #000000,
+      #151515,
+      #050505
+    );
+
+  background-size:200% 200%;
+
+  animation:
+    backgroundMove 14s ease infinite;
+}
+
+
+/* ==================================================
+   BACKGROUND LINGKARAN
+================================================== */
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+
+  width:300px;
+  height:300px;
+
+  top:-120px;
+  left:-100px;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.15);
+
+  border-radius:50%;
+
+  box-shadow:
+    0 0 50px
+    rgba(255,255,255,0.08);
+
+  animation:
+    lightMove 10s linear infinite;
+
+  pointer-events:none;
+
+  z-index:-1;
+}
+
+
+body::after{
+
+  content:"";
+
+  position:fixed;
+
+  width:400px;
+  height:400px;
+
+  right:-180px;
+  bottom:-180px;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.12);
+
+  border-radius:50%;
+
+  box-shadow:
+    0 0 50px
+    rgba(255,255,255,0.07);
+
+  animation:
+    lightMove2 13s linear infinite;
+
+  pointer-events:none;
+
+  z-index:-1;
+}
+
+
+/* ==================================================
+   WELCOME
+================================================== */
+
+marquee{
+
+  display:block;
+
+  width:94%;
+
+  margin:
+    5px auto 15px;
+
+  padding:9px;
+
+  color:white;
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border:
+    1px solid #555;
+
+  border-radius:10px;
+
+  font-size:13px;
+
+  font-weight:bold;
+
+  letter-spacing:3px;
+
+  text-shadow:
+    0 0 8px white;
+
+  box-shadow:
+    0 0 15px
+    rgba(255,255,255,0.08);
+}
+
+
+/* ==================================================
+   JUDUL
+================================================== */
+
+h1{
+
+  display:inline-block;
+
+  max-width:95%;
+
+  margin:
+    5px auto 20px;
+
+  padding:
+    17px 25px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #000,
+      #292929,
+      #000
+    );
+
+  border:
+    2px solid white;
+
+  border-radius:16px;
+
+  font-size:30px;
+
+  letter-spacing:3px;
+
+  text-shadow:
+    0 0 5px white,
+    0 0 15px
+    rgba(255,255,255,0.5);
+
+  box-shadow:
+    0 0 12px
+    rgba(255,255,255,0.3),
+
+    inset 0 0 20px
+    rgba(255,255,255,0.05);
+
+  animation:
+    titleShow 1s ease;
+}
+
+
+/* ==================================================
+   GARIS
+================================================== */
+
+hr{
+
+  width:90%;
+
+  max-width:1000px;
+
+  height:1px;
+
+  margin:17px auto;
+
+  border:none;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      #666,
+      white,
+      #666,
+      transparent
+    );
+
+  box-shadow:
+    0 0 8px
+    rgba(255,255,255,0.4);
+}
+
+
+/* ==================================================
+   JUDUL FOTO
+================================================== */
+
+.photo-title{
+
+  position:relative;
+
+  display:inline-block;
+
+  max-width:90%;
+
+  margin:
+    10px auto 28px;
+
+  padding:
+    13px 38px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.09),
+      rgba(255,255,255,0.02)
+    );
+
+  border:
+    1px solid #777;
+
+  border-left:
+    4px solid white;
+
+  border-right:
+    4px solid white;
+
+  border-radius:12px;
+
+  font-size:23px;
+
+  letter-spacing:4px;
+
+  text-shadow:
+    0 0 8px white,
+    0 0 20px
+    rgba(255,255,255,0.5);
+
+  box-shadow:
+    0 0 20px
+    rgba(255,255,255,0.1);
+
+  animation:
+    photoTitle 1s ease;
+}
+
+
+.photo-title::before,
+.photo-title::after{
+
+  content:"✦";
+
+  position:absolute;
+
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  font-size:15px;
+
+  animation:
+    starBlink 1.5s
+    infinite alternate;
+}
+
+
+.photo-title::before{
+  left:10px;
+}
+
+
+.photo-title::after{
+  right:10px;
+}
+
+
+/* ==================================================
+   ALBUM
+================================================== */
+
+.album{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(240px,1fr)
+    );
+
+  gap:23px;
+
+  width:94%;
+
+  max-width:1100px;
+
+  margin:
+    0 auto 35px;
+}
+
+
+/* ==================================================
+   KARTU FOTO
+================================================== */
+
+.photo-card{
+
+  position:relative;
+
+  width:100%;
+
+  padding:7px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #222,
+      #050505
+    );
+
+  border:
+    1px solid #555;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,0.8);
+
+  opacity:0;
+
+  cursor:pointer;
+
+  animation:
+    photoAppear
+    0.8s ease forwards;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+
+/* ANIMASI */
+
+.photo-card:nth-child(1){
+  animation-delay:.1s;
+}
+
+.photo-card:nth-child(2){
+  animation-delay:.2s;
+}
+
+.photo-card:nth-child(3){
+  animation-delay:.3s;
+}
+
+.photo-card:nth-child(4){
+  animation-delay:.4s;
+}
+
+.photo-card:nth-child(5){
+  animation-delay:.5s;
+}
+
+.photo-card:nth-child(6){
+  animation-delay:.6s;
+}
+
+.photo-card:nth-child(7){
+  animation-delay:.7s;
+}
+
+.photo-card:nth-child(8){
+  animation-delay:.8s;
+}
+
+.photo-card:nth-child(9){
+  animation-delay:.9s;
+}
+
+
+/* HOVER */
+
+.photo-card:hover{
+
+  transform:
+    translateY(-9px)
+    scale(1.025);
+
+  border-color:white;
+
+  box-shadow:
+
+    0 0 10px white,
+
+    0 0 25px
+    rgba(255,255,255,0.5),
+
+    0 15px 40px
+    rgba(0,0,0,0.9);
+
+  z-index:5;
+}
+
+
+/* ==================================================
+   FOTO
+================================================== */
+
+.photo-card img{
+
+  display:block;
+
+  width:100%;
+
+  height:230px;
+
+  object-fit:cover;
+
+  border-radius:12px;
+
+  filter:
+    grayscale(15%)
+    brightness(.9);
+
+  transition:
+    transform .6s ease,
+    filter .6s ease;
+}
+
+
+.photo-card:hover img{
+
+  transform:
+    scale(1.08);
+
+  filter:
+    grayscale(0%)
+    brightness(1.08);
+}
+
+
+/* CAHAYA */
+
+.photo-card::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:-100%;
+
+  left:-150%;
+
+  width:80%;
+
+  height:300%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.18),
+      transparent
+    );
+
+  transform:
+    rotate(25deg);
+
+  transition:
+    .8s;
+}
+
+
+.photo-card:hover::after{
+  left:150%;
+}
+
+
+/* ==================================================
+   NOMOR FOTO
+================================================== */
+
+.photo-number{
+
+  position:absolute;
+
+  top:14px;
+  left:14px;
+
+  width:32px;
+  height:32px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+
+  background:
+    rgba(0,0,0,.75);
+
+  border:
+    1px solid white;
+
+  border-radius:50%;
+
+  font-size:11px;
+
+  font-weight:bold;
+
+  box-shadow:
+    0 0 10px
+    rgba(255,255,255,.5);
+
+  z-index:3;
+}
+
+
+/* ==================================================
+   KATA-KATA
+================================================== */
+
+h3{
+
+  display:inline-block;
+
+  max-width:90%;
+
+  margin:
+    15px auto;
+
+  padding:
+    10px 24px;
+
+  color:white;
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:
+    1px solid #777;
+
+  border-radius:10px;
+
+  font-size:20px;
+
+  letter-spacing:2px;
+
+  text-shadow:
+    0 0 8px white;
+
+  animation:
+    fadeUp 1s ease;
+}
+
+
+h3 + p{
+
+  width:90%;
+
+  max-width:800px;
+
+  margin:
+    10px auto 25px;
+
+  padding:
+    18px 20px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.06),
+      rgba(255,255,255,.02)
+    );
+
+  border:
+    1px solid #666;
+
+  border-left:
+    4px solid white;
+
+  border-right:
+    4px solid white;
+
+  border-radius:12px;
+
+  font-size:16px;
+
+  line-height:1.7;
+
+  font-style:italic;
+
+  box-shadow:
+    0 5px 20px
+    rgba(0,0,0,.6);
+
+  animation:
+    quoteShow 1.2s ease;
+}
+
+
+/* ==================================================
+   TOMBOL
+================================================== */
+
+a{
+
+  display:inline-block;
+
+  min-width:130px;
+
+  margin:8px;
+
+  padding:
+    12px 22px;
+
+  color:white;
+
+  background:#111;
+
+  border:
+    1px solid #777;
+
+  border-radius:10px;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+  letter-spacing:1px;
+
+  box-shadow:
+    0 5px 12px
+    rgba(0,0,0,.5);
+
+  transition:
+    .35s ease;
+}
+
+
+a:hover{
+
+  color:black;
+
+  background:white;
+
+  border-color:white;
+
+  transform:
+    translateY(-4px)
+    scale(1.05);
+
+  box-shadow:
+    0 0 10px white,
+    0 0 25px
+    rgba(255,255,255,.5);
+}
+
+
+/* ==================================================
+   EMAIL
+================================================== */
+
+small{
+
+  display:inline-block;
+
+  max-width:90%;
+
+  margin:
+    10px auto 20px;
+
+  padding:
+    8px 15px;
+
+  color:#aaa;
+
+  background:
+    rgba(255,255,255,.03);
+
+  border:
+    1px solid #444;
+
+  border-radius:7px;
+
+  font-size:12px;
+}
+
+
+/* ==================================================
+   LIGHTBOX
+================================================== */
+
+.lightbox{
+
+  position:fixed;
+
+  inset:0;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:15px;
+
+  background:
+    rgba(0,0,0,.94);
+
+  backdrop-filter:
+    blur(10px);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.4s;
+
+  z-index:999;
+}
+
+
+.lightbox.active{
+
+  opacity:1;
+
+  visibility:visible;
+}
+
+
+.lightbox img{
+
+  display:block;
+
+  width:auto;
+
+  max-width:95vw;
+
+  max-height:85vh;
+
+  object-fit:contain;
+
+  border:
+    2px solid white;
+
+  border-radius:14px;
+
+  box-shadow:
+
+    0 0 20px white,
+
+    0 0 60px
+    rgba(255,255,255,.5);
+
+  transform:
+    scale(.7);
+
+  transition:.4s;
+}
+
+
+.lightbox.active img{
+  transform:scale(1);
+}
+
+
+/* ==================================================
+   CLOSE
+================================================== */
+
+.close{
+
+  position:absolute;
+
+  top:15px;
+  right:18px;
+
+  width:45px;
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+
+  background:#111;
+
+  border:
+    1px solid white;
+
+  border-radius:50%;
+
+  font-size:25px;
+
+  cursor:pointer;
+
+  transition:.3s;
+
+  z-index:1000;
+}
+
+
+.close:hover{
+
+  color:black;
+
+  background:white;
+
+  transform:
+    rotate(90deg);
+
+  box-shadow:
+    0 0 20px white;
+}
+
+
+/* ==================================================
+   SCROLLBAR
+================================================== */
+
+::-webkit-scrollbar{
+  width:7px;
+}
+
+::-webkit-scrollbar-track{
+  background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:#555;
+
+  border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:white;
+}
+
+
+/* ==================================================
+   ANIMASI
+================================================== */
+
+@keyframes backgroundMove{
+
+  0%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:100% 50%;
+  }
+
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+
+@keyframes lightMove{
+
+  0%{
+    transform:
+      translate(0,0)
+      rotate(0deg);
+  }
+
+  50%{
+    transform:
+      translate(120px,90px)
+      rotate(180deg);
+  }
+
+  100%{
+    transform:
+      translate(0,0)
+      rotate(360deg);
+  }
+}
+
+
+@keyframes lightMove2{
+
+  0%{
+    transform:
+      translate(0,0)
+      rotate(0deg);
+  }
+
+  50%{
+    transform:
+      translate(-100px,-80px)
+      rotate(180deg);
+  }
+
+  100%{
+    transform:
+      translate(0,0)
+      rotate(360deg);
+  }
+}
+
+
+@keyframes titleShow{
+
+  from{
+    opacity:0;
+
+    transform:
+      translateY(-30px)
+      scale(.8);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes photoTitle{
+
+  from{
+    opacity:0;
+
+    transform:
+      translateY(30px);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes photoAppear{
+
+  from{
+    opacity:0;
+
+    transform:
+      translateY(50px)
+      scale(.85);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes starBlink{
+
+  from{
+    opacity:.3;
+    text-shadow:none;
+  }
+
+  to{
+    opacity:1;
+
+    text-shadow:
+      0 0 10px white,
+      0 0 20px white;
+  }
+}
+
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+
+    transform:
+      translateY(20px);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes quoteShow{
+
+  from{
+    opacity:0;
+
+    transform:
+      scale(.9);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      scale(1);
+  }
+}
+
+
+/* ==================================================
+   KHUSUS HP
+================================================== */
+
+@media (max-width:600px){
+
+  body{
+    padding:
+      12px 5px;
+  }
+
+
+  marquee{
+
+    width:94%;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+  }
+
+
+  h1{
+
+    max-width:94%;
+
+    font-size:21px;
+
+    line-height:1.3;
+
+    padding:
+      14px 16px;
+
+    letter-spacing:2px;
+  }
+
+
+  hr{
+
+    width:92%;
+
+    margin:
+      14px auto;
+  }
+
+
+  .photo-title{
+
+    max-width:90%;
+
+    font-size:19px;
+
+    letter-spacing:2px;
+
+    padding:
+      11px 30px;
+
+    margin:
+      12px auto 22px;
+  }
+
+
+  .album{
+
+    grid-template-columns:1fr;
+
+    width:
+      calc(100% - 16px);
+
+    max-width:500px;
+
+    gap:16px;
+  }
+
+
+  .photo-card{
+
+    width:100%;
+
+    padding:6px;
+
+    border-radius:15px;
+  }
+
+
+  .photo-card img{
+
+    width:100%;
+
+    height:auto;
+
+    aspect-ratio:
+      16 / 10;
+
+    object-fit:cover;
+
+    border-radius:10px;
+  }
+
+
+  .photo-number{
+
+    top:11px;
+    left:11px;
+
+    width:28px;
+    height:28px;
+
+    font-size:10px;
+  }
+
+
+  h3{
+
+    max-width:90%;
+
+    font-size:17px;
+
+    letter-spacing:1px;
+
+    padding:
+      9px 18px;
+  }
+
+
+  h3 + p{
+
+    width:
+      calc(100% - 24px);
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    padding:16px;
+  }
+
+
+  a{
+
+    min-width:0;
+
+    width:42%;
+
+    margin:
+      5px 2px;
+
+    padding:
+      10px 7px;
+
+    font-size:12px;
+  }
+
+
+  .lightbox{
+
+    padding:8px;
+  }
+
+
+  .lightbox img{
+
+    width:96vw;
+
+    max-width:96vw;
+
+    max-height:78vh;
+
+    border-radius:10px;
+  }
+
+
+  .close{
+
+    top:10px;
+    right:10px;
+
+    width:40px;
+    height:40px;
+
+    font-size:22px;
+  }
+
+
+  small{
+
+    max-width:90%;
+
+    font-size:10px;
+  }
+
+}
+
+
+/* ==================================================
+   HP SANGAT KECIL
+================================================== */
+
+@media (max-width:360px){
+
+  h1{
+    font-size:18px;
+  }
+
+  .photo-title{
+    font-size:17px;
+  }
+
+  .photo-card img{
+    aspect-ratio:4 / 3;
+  }
+
+  a{
+    width:44%;
+    font-size:11px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<marquee>
+  SELAMAT DATANG DI MOMEN KELAS 9B
+</marquee>
+
+
+<h1>
+  MOMEN MOMEN 9B
+</h1>
+
+
+<hr>
+<hr>
+
+
+<!-- ==================================================
+     FOTO
+================================================== -->
+
+<h2 class="photo-title">
+  Foto-Foto
+</h2>
+
+
+<div class="album">
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      01
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-b9742cfd-c046-4083-8018-45631188aced.jpg"
+      alt="Foto kelas 9B 01"
+    >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      02
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-99cb92b9-90cb-42f8-b8e6-3bf2a05b09bf.jpg"
+      alt="Foto kelas 9B 02"
+    >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      03
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-aea41d01-71d7-44c3-9846-f56239330161.jpg"
+      alt="Foto kelas 9B 03"
+    >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      04
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-083d774a-24a5-472a-a84f-23d92e9ae5fd.jpg"
+      alt="Foto kelas 9B 04"
+    >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      05
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-3f23711c-ac12-4fd1-8674-65880d3aea94.jpg"
+      alt="Foto kelas 9B 05"
+    >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      06
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-ddf31316-9e1a-4f06-a161-10dc313a19b2.jpg"
+      alt="Foto kelas 9B 06"
+    >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      07
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-f1b76f27-b18d-445d-bb78-ef1dec6f2ae1.jpg"
+      alt="Foto kelas 9B 07"
+    >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      08
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-29-92c46368-4e42-4481-8eb5-baaf7366698b.jpg"
+       alt="Foto kelas 9B 08" >
+
+  </div>
+
+
+  <div
+    class="photo-card"
+    onclick="openPhoto(this)"
+  >
+
+    <span class="photo-number">
+      09
+    </span>
+
+    <img
+      src="https://cdn.phototourl.com/member/2026-09-28-57dec8c8-07a1-44af-82c1-d88532411255.jpg"
+      alt="Foto kelas 9B 09"
+    >
+
+  </div>
+
+
+</div>
+
+
+<hr>
+
+
+<!-- ==================================================
+     KATA-KATA
+================================================== -->
+
+<h3>
+  Kata-Kata
+</h3>
+
+
+<p>
+
+  "Kelas 9B bukan sekadar ruangan
+  tempat kita belajar, tapi tempat
+  di mana keluarga kedua lahir dan
+  tumbuh bersama."
+
+</p>
+
+
+<hr>
+
+
+<!-- ==================================================
+     TOMBOL
+================================================== -->
+
+<a href="STRUKTUR.html">
+  Selanjutnya
+</a>
+
+
+<a href="ANGGOTA.html">
+  Kembali
+</a>
+
+
+<hr>
+
+
+<small>
+  azkfaiqr55@gmail.com
+</small>
+
+
+<!-- ==================================================
+     LIGHTBOX
+================================================== -->
+
+<div
+  class="lightbox"
+  id="lightbox"
+>
+
+  <div
+    class="close"
+    onclick="closePhoto()"
+  >
+    ×
+  </div>
+
+
+  <img
+    id="lightbox-img"
+    src=""
+    alt="Foto diperbesar"
+  >
+
+</div>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+/**
+ * Membuka foto dalam tampilan penuh.
+ *
+ * @param {HTMLElement} card
+ */
+function openPhoto(card) {
+
+  const image =
+    card.querySelector("img");
+
+  const lightbox =
+    document.getElementById("lightbox");
+
+  const lightboxImg =
+    document.getElementById("lightbox-img");
+
+
+  /* Cegah error jika elemen tidak ditemukan */
+
+  if (
+    !image ||
+    !lightbox ||
+    !lightboxImg
+  ) {
+
+    return;
+
+  }
+
+
+  /* Masukkan foto ke lightbox */
+
+  lightboxImg.src =
+    image.src;
+
+
+  /* Gunakan alt foto */
+
+  lightboxImg.alt =
+    image.alt ||
+    "Foto diperbesar";
+
+
+  /* Tampilkan lightbox */
+
+  lightbox.classList.add(
+    "active"
+  );
+
+
+  /* Kunci scroll halaman */
+
+  document.body.style.overflow =
+    "hidden";
+}
+
+
+/**
+ * Menutup lightbox.
+ */
+function closePhoto() {
+
+  const lightbox =
+    document.getElementById("lightbox");
+
+
+  if (!lightbox) {
+
+    return;
+
+  }
+
+
+  lightbox.classList.remove(
+    "active"
+  );
+
+
+  document.body.style.overflow =
+    "";
+}
+
+
+/* ==================================================
+   KLIK AREA HITAM
+================================================== */
+
+const lightbox =
+  document.getElementById("lightbox");
+
+
+if (lightbox) {
+
+  lightbox.addEventListener(
+    "click",
+    function(event) {
+
+      if (
+        event.target === lightbox
+      ) {
+
+        closePhoto();
+
+      }
+
+    }
+  );
+
+}
+
+
+/* ==================================================
+   TOMBOL ESC
+================================================== */
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      closePhoto();
+
+    }
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>STRUKTUR KELAS 9B</title>
+
+  <style>
+    /* =========================
+       DASAR
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 20px 10px 50px;
+
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      color: white;
+
+      background:
+        radial-gradient(circle at 10% 10%, #333 0%, transparent 25%),
+        radial-gradient(circle at 90% 90%, #292929 0%, transparent 25%),
+        linear-gradient(135deg, #000, #151515, #050505);
+
+      background-size: 200% 200%;
+      animation: backgroundMove 12s ease infinite;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================
+       EFEK BACKGROUND
+    ========================= */
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      width: 280px;
+      height: 280px;
+
+      top: -130px;
+      left: -100px;
+
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 50px rgba(255,255,255,.08);
+
+      animation: circleMove 10s linear infinite;
+
+      pointer-events: none;
+
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+
+      position: fixed;
+
+      width: 400px;
+      height: 400px;
+
+      right: -200px;
+      bottom: -200px;
+
+      border: 1px solid rgba(255,255,255,.12);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 50px rgba(255,255,255,.07);
+
+      animation: circleMove2 13s linear infinite;
+
+      pointer-events: none;
+
+      z-index: -1;
+    }
+
+
+    /* =========================
+       JUDUL
+    ========================= */
+
+    .judul {
+      display: inline-block;
+
+      margin: 5px auto 20px;
+      padding: 18px 30px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #000,
+          #333,
+          #000
+        );
+
+      border: 2px solid white;
+
+      border-radius: 16px;
+
+      font-size: 30px;
+      letter-spacing: 4px;
+
+      text-shadow:
+        0 0 5px white,
+        0 0 15px white;
+
+      box-shadow:
+        0 0 12px rgba(255,255,255,.4),
+        inset 0 0 20px rgba(255,255,255,.05);
+
+      animation: judulMasuk 1s ease;
+    }
+
+
+    /* =========================
+       GARIS
+    ========================= */
+
+    hr {
+      width: 90%;
+      max-width: 1000px;
+
+      height: 1px;
+
+      margin: 20px auto;
+
+      border: none;
+
+      background:
+        linear-gradient(
+          to right,
+          transparent,
+          #555,
+          white,
+          #555,
+          transparent
+        );
+
+      box-shadow:
+        0 0 8px rgba(255,255,255,.4);
+    }
+
+
+    /* =========================
+       SUB JUDUL
+    ========================= */
+
+    .subjudul {
+      display: inline-block;
+
+      margin: 5px auto 25px;
+      padding: 10px 25px;
+
+      color: #ddd;
+
+      background: rgba(255,255,255,.05);
+
+      border: 1px solid #666;
+
+      border-radius: 10px;
+
+      font-size: 14px;
+
+      letter-spacing: 4px;
+
+      box-shadow:
+        0 0 15px rgba(255,255,255,.08);
+
+      animation: fadeUp .8s ease;
+    }
+
+
+    /* =========================
+       INFORMASI KELAS
+    ========================= */
+
+    .info-kelas {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      max-width: 850px;
+
+      margin: 0 auto 35px;
+    }
+
+
+    .info-card {
+      position: relative;
+
+      padding: 22px 15px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #080808,
+          #242424,
+          #080808
+        );
+
+      border: 1px solid #555;
+
+      border-radius: 15px;
+
+      box-shadow:
+        0 8px 20px rgba(0,0,0,.7);
+
+      overflow: hidden;
+
+      transition: .4s;
+    }
+
+
+    .info-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 100%;
+      height: 2px;
+
+      top: 0;
+      left: -100%;
+
+      background: white;
+
+      transition: .5s;
+    }
+
+
+    .info-card:hover::before {
+      left: 0;
+    }
+
+
+    .info-card:hover {
+      transform:
+        translateY(-7px)
+        scale(1.03);
+
+      border-color: white;
+
+      box-shadow:
+        0 0 20px rgba(255,255,255,.25);
+    }
+
+
+    .info-icon {
+      font-size: 25px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .info-card h3 {
+      color: #999;
+
+      font-size: 13px;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .info-card p {
+      color: white;
+
+      font-size: 20px;
+
+      font-weight: bold;
+    }
+
+
+    /* =========================
+       STRUKTUR
+    ========================= */
+
+    .struktur {
+      max-width: 950px;
+
+      margin: auto;
+    }
+
+
+    .jabatan {
+      margin: 30px auto;
+    }
+
+
+    .jabatan-title {
+      display: inline-block;
+
+      position: relative;
+
+      padding: 11px 28px;
+
+      margin-bottom: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #000,
+          #292929,
+          #000
+        );
+
+      border: 2px solid #aaa;
+
+      border-radius: 11px;
+
+      font-size: 16px;
+
+      letter-spacing: 3px;
+
+      box-shadow:
+        0 0 15px rgba(255,255,255,.15);
+
+      transition: .3s;
+    }
+
+
+    .jabatan-title:hover {
+      border-color: white;
+
+      box-shadow:
+        0 0 20px rgba(255,255,255,.4);
+    }
+
+
+    /* =========================
+       KETUA & WAKIL
+    ========================= */
+
+    .pemimpin {
+      display: flex;
+
+      justify-content: center;
+
+      align-items: stretch;
+
+      gap: 20px;
+
+      max-width: 600px;
+
+      margin: auto;
+    }
+
+
+    .pemimpin-card {
+      position: relative;
+
+      flex: 1;
+
+      padding: 22px 15px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #050505,
+          #292929,
+          #050505
+        );
+
+      border: 2px solid #666;
+
+      border-radius: 15px;
+
+      box-shadow:
+        0 8px 20px rgba(0,0,0,.7);
+
+      transition: .4s;
+
+      animation: cardMasuk .8s ease;
+    }
+
+
+    .pemimpin-card:hover {
+      transform:
+        translateY(-8px)
+        scale(1.04);
+
+      border-color: white;
+
+      box-shadow:
+        0 0 25px rgba(255,255,255,.35);
+    }
+
+
+    .pemimpin-card .icon {
+      font-size: 28px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .pemimpin-card .jabatan-kecil {
+      color: #999;
+
+      font-size: 12px;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .pemimpin-card .nama-besar {
+      font-size: 20px;
+
+      font-weight: bold;
+
+      text-shadow:
+        0 0 8px rgba(255,255,255,.4);
+    }
+
+
+    /* =========================
+       SEKRETARIS & BENDAHARA
+    ========================= */
+
+    .nama-container {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+
+    .nama {
+      min-width: 145px;
+
+      padding: 14px 20px;
+
+      color: white;
+
+      background: #111;
+
+      border: 1px solid #555;
+
+      border-radius: 10px;
+
+      font-size: 15px;
+
+      font-weight: bold;
+
+      transition: .35s;
+    }
+
+
+    .nama:hover {
+      color: black;
+
+      background: white;
+
+      border-color: white;
+
+      transform:
+        translateY(-5px)
+        scale(1.03);
+
+      box-shadow:
+        0 0 15px white;
+    }
+
+
+    /* =========================
+       GARIS PENGHUBUNG
+    ========================= */
+
+    .penghubung {
+      width: 2px;
+
+      height: 35px;
+
+      margin: -5px auto 5px;
+
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        white,
+        transparent
+      );
+
+      box-shadow:
+        0 0 8px white;
+    }
+
+
+    /* =========================
+       ANGGOTA
+    ========================= */
+
+    .daftar-anggota {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+      max-width: 900px;
+
+      margin: auto;
+    }
+
+
+    .anggota {
+      position: relative;
+
+      padding: 12px 7px;
+
+      color: #ddd;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0c0c0c,
+          #191919
+        );
+
+      border: 1px solid #444;
+
+      border-radius: 9px;
+
+      font-size: 14px;
+
+      transition: .3s;
+    }
+
+
+    .anggota:hover {
+      color: black;
+
+      background: white;
+
+      border-color: white;
+
+      transform:
+        translateY(-4px)
+        scale(1.03);
+
+      box-shadow:
+        0 0 12px rgba(255,255,255,.7);
+    }
+
+
+    /* Nomor anggota */
+    .anggota::before {
+      content: "•";
+
+      color: #888;
+
+      margin-right: 5px;
+    }
+
+
+    /* =========================
+       TERIMA KASIH
+    ========================= */
+
+    .terima-kasih {
+      display: inline-block;
+
+      margin: 25px auto 15px;
+
+      padding: 14px 30px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #050505,
+          #292929,
+          #050505
+        );
+
+      border: 1px solid #777;
+
+      border-radius: 12px;
+
+      font-size: 19px;
+
+      letter-spacing: 3px;
+
+      text-shadow:
+        0 0 8px white;
+
+      box-shadow:
+        0 0 20px rgba(255,255,255,.15);
+
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+
+    /* =========================
+       NAVIGASI
+    ========================= */
+
+    .navigasi {
+      margin-top: 15px;
+    }
+
+
+    .navigasi a {
+      display: inline-block;
+
+      margin: 6px;
+
+      padding: 12px 20px;
+
+      color: white;
+
+      background: #111;
+
+      border: 1px solid #666;
+
+      border-radius: 10px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+      font-size: 13px;
+
+      letter-spacing: 1px;
+
+      transition: .35s;
+    }
+
+
+    .navigasi a:hover {
+      color: black;
+
+      background: white;
+
+      border-color: white;
+
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 0 18px white;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      display: inline-block;
+
+      margin-top: 20px;
+
+      padding: 9px 18px;
+
+      color: #888;
+
+      background: rgba(255,255,255,.03);
+
+      border: 1px solid #444;
+
+      border-radius: 8px;
+
+      font-size: 12px;
+
+      transition: .3s;
+    }
+
+
+    .footer:hover {
+      color: white;
+
+      border-color: white;
+
+      box-shadow:
+        0 0 12px rgba(255,255,255,.3);
+    }
+
+
+    /* =========================
+       ANIMASI
+    ========================= */
+
+    @keyframes backgroundMove {
+
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+
+    }
+
+
+    @keyframes circleMove {
+
+      0% {
+        transform:
+          translate(0,0)
+          rotate(0deg);
+      }
+
+      50% {
+        transform:
+          translate(120px,90px)
+          rotate(180deg);
+      }
+
+      100% {
+        transform:
+          translate(0,0)
+          rotate(360deg);
+      }
+
+    }
+
+
+    @keyframes circleMove2 {
+
+      0% {
+        transform:
+          translate(0,0)
+          rotate(0deg);
+      }
+
+      50% {
+        transform:
+          translate(-100px,-80px)
+          rotate(180deg);
+      }
+
+      100% {
+        transform:
+          translate(0,0)
+          rotate(360deg);
+      }
+
+    }
+
+
+    @keyframes judulMasuk {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(-40px)
+          scale(.7);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+
+    @keyframes fadeUp {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    @keyframes cardMasuk {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    @keyframes pulse {
+
+      0%,100% {
+        box-shadow:
+          0 0 10px rgba(255,255,255,.1);
+      }
+
+      50% {
+        box-shadow:
+          0 0 25px rgba(255,255,255,.3);
+      }
+
+    }
+
+
+    /* =========================
+       TAMPILAN HP
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      body {
+        padding:
+          15px 6px 35px;
+      }
+
+
+      .judul {
+        font-size: 22px;
+
+        padding:
+          15px 18px;
+
+        letter-spacing: 2px;
+      }
+
+
+      .subjudul {
+        font-size: 12px;
+
+        letter-spacing: 2px;
+      }
+
+
+      .info-kelas {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        gap: 10px;
+
+        width: 95%;
+      }
+
+
+      .info-card {
+        width: 100%;
+
+        padding: 15px 8px;
+      }
+
+
+      .info-card:last-child {
+        grid-column:
+          1 / -1;
+      }
+
+
+      .info-card p {
+        font-size: 17px;
+      }
+
+
+      .pemimpin {
+        gap: 10px;
+
+        width: 95%;
+      }
+
+
+      .pemimpin-card {
+        padding: 18px 8px;
+      }
+
+
+      .pemimpin-card .nama-besar {
+        font-size: 16px;
+      }
+
+
+      .daftar-anggota {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        width: 94%;
+
+        gap: 8px;
+      }
+
+
+      .anggota {
+        font-size: 13px;
+
+        padding: 11px 4px;
+      }
+
+
+      .nama {
+        min-width: 120px;
+
+        font-size: 13px;
+
+        padding:
+          11px 14px;
+      }
+
+
+      .jabatan-title {
+        font-size: 14px;
+
+        padding:
+          10px 18px;
+      }
+
+
+      .terima-kasih {
+        font-size: 16px;
+
+        padding:
+          12px 20px;
+      }
+
+
+      .navigasi a {
+        padding:
+          10px 15px;
+
+        font-size: 12px;
+      }
+
+    }
+
+
+    /* HP SANGAT KECIL */
+    @media (max-width: 380px) {
+
+      .info-kelas {
+        grid-template-columns: 1fr;
+      }
+
+
+      .info-card:last-child {
+        grid-column: auto;
+      }
+
+
+      .pemimpin {
+        flex-direction: column;
+      }
+
+
+      .daftar-anggota {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- JUDUL -->
+
+  <h1 class="judul">
+    STRUKTUR 9B
+  </h1>
+
+
+  <hr>
+
+
+  <div class="subjudul">
+    PROGRAM BELAJAR • KELAS 9B
+  </div>
+
+
+  <!-- =====================
+       INFORMASI KELAS
+  ====================== -->
+
+  <div class="info-kelas">
+
+    <div class="info-card">
+
+      <div class="info-icon">👥</div>
+
+      <h3>ANGGOTA</h3>
+
+      <p>27</p>
+
+    </div>
+
+
+    <div class="info-card">
+
+      <div class="info-icon">🏫</div>
+
+      <h3>KELAS</h3>
+
+      <p>9B</p>
+
+    </div>
+
+
+    <div class="info-card">
+
+      <div class="info-icon">👩‍🏫</div>
+
+      <h3>WALI KELAS</h3>
+
+      <p>Dona Mega Ayunda</p>
+
+    </div>
+
+  </div>
+
+
+  <hr>
+
+
+  <!-- =====================
+       STRUKTUR ORGANISASI
+  ====================== -->
+
+  <div class="struktur">
+
+
+    <!-- KETUA & WAKIL -->
+
+    <div class="jabatan">
+
+      <div class="jabatan-title">
+        KETUA & WAKIL
+      </div>
+
+
+      <div class="pemimpin">
+
+
+        <div class="pemimpin-card">
+
+          <div class="icon">👑</div>
+
+          <div class="jabatan-kecil">
+            KETUA KELAS
+          </div>
+
+          <div class="nama-besar">
+            Azka
+          </div>
+
+        </div>
+
+
+        <div class="pemimpin-card">
+
+          <div class="icon">⭐</div>
+
+          <div class="jabatan-kecil">
+            WAKIL KETUA
+          </div>
+
+          <div class="nama-besar">
+            Zulfiama
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="penghubung"></div>
+
+
+    <!-- SEKRETARIS -->
+
+    <div class="jabatan">
+
+      <div class="jabatan-title">
+        SEKRETARIS
+      </div>
+
+
+      <div class="nama-container">
+
+        <div class="nama">
+          Reisha
+        </div>
+
+        <div class="nama">
+          Mutingatur
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- BENDAHARA -->
+
+    <div class="jabatan">
+
+      <div class="jabatan-title">
+        BENDAHARA
+      </div>
+
+
+      <div class="nama-container">
+
+        <div class="nama">
+          Sintha
+        </div>
+
+        <div class="nama">
+          Purnama Dewi
+        </div>
+
+        <div class="nama">
+          Mayang
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <hr>
+
+
+  <!-- =====================
+       ANGGOTA
+  ====================== -->
+
+  <div class="jabatan">
+
+    <div class="jabatan-title">
+      ANGGOTA KELAS
+    </div>
+
+
+    <div class="daftar-anggota">
+
+      <div class="anggota">Azka</div>
+      <div class="anggota">Mushbihin</div>
+      <div class="anggota">Muhaimin</div>
+      <div class="anggota">Alan</div>
+
+      <div class="anggota">Ali</div>
+      <div class="anggota">Diego</div>
+      <div class="anggota">Fakhru</div>
+      <div class="anggota">Fakhri Ilham</div>
+
+      <div class="anggota">Fahri</div>
+      <div class="anggota">Rio</div>
+      <div class="anggota">Rivai</div>
+      <div class="anggota">Fadlan</div>
+
+      <div class="anggota">Leo</div>
+      <div class="anggota">Mayang</div>
+      <div class="anggota">Sintha</div>
+      <div class="anggota">Dayang</div>
+
+      <div class="anggota">Zulfiama</div>
+      <div class="anggota">Mutingatur</div>
+      <div class="anggota">Ma'rifatul</div>
+      <div class="anggota">Reisha</div>
+
+      <div class="anggota">Rinjani</div>
+      <div class="anggota">Fadilah</div>
+      <div class="anggota">Jasmine</div>
+      <div class="anggota">Dwi</div>
+
+      <div class="anggota">Tia</div>
+      <div class="anggota">Yara</div>
+      <div class="anggota">Citra</div>
+
+    </div>
+
+  </div>
+
+
+  <hr>
+
+
+  <!-- PENUTUP -->
+
+  <h2 class="terima-kasih">
+    TERIMA KASIH
+  </h2>
+
+
+  <hr>
+
+
+  <!-- NAVIGASI -->
+
+  <div class="navigasi">
+
+    <a href="9B.html">
+      ⌂ KE AWAL
+    </a>
+
+    <a href="ANGGOTA.html">
+      👥 ANGGOTA
+    </a>
+
+    <a href="MOMEN.html">
+      📷 MOMEN
+    </a>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+    © AZKA FAIQ RIZQULLOH
+  </div>
+
+
+</body>
+</html>

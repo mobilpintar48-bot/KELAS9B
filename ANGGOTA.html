@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ANGGOTA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  padding: 20px 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #ffffff;
+
+  background:
+    radial-gradient(circle at 10% 10%, #303030 0%, transparent 25%),
+    radial-gradient(circle at 90% 90%, #292929 0%, transparent 25%),
+    linear-gradient(135deg, #020202, #111111, #050505);
+
+  background-size: 200% 200%;
+  animation: backgroundMove 14s ease infinite;
+
+  overflow-x: hidden;
+}
+
+
+/* ================================
+   BACKGROUND
+================================ */
+
+body::before {
+  content: "";
+  position: fixed;
+
+  width: 300px;
+  height: 300px;
+
+  top: -120px;
+  left: -100px;
+
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.08),
+    0 0 80px rgba(255,255,255,0.04);
+
+  animation: lightMove 10s linear infinite;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+
+  width: 400px;
+  height: 400px;
+
+  right: -180px;
+  bottom: -180px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 50px rgba(255,255,255,0.07);
+
+  animation: lightMove2 13s linear infinite;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* ================================
+   JUDUL
+================================ */
+
+h1 {
+  display: inline-block;
+
+  margin: 5px auto 20px;
+  padding: 18px 28px;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #000000,
+      #252525,
+      #000000
+    );
+
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 15px rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 0 12px rgba(255,255,255,0.3),
+    inset 0 0 20px rgba(255,255,255,0.05);
+
+  animation: titleShow 1s ease;
+}
+
+
+/* ================================
+   JAM
+================================ */
+
+#jam {
+  display: inline-block;
+
+  margin: 5px auto 15px;
+  padding: 10px 25px;
+
+  color: #ffffff;
+  background: rgba(0,0,0,0.65);
+
+  border: 1px solid #777777;
+  border-radius: 10px;
+
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 4px;
+
+  text-shadow:
+    0 0 8px #ffffff;
+
+  box-shadow:
+    0 0 15px rgba(255,255,255,0.15);
+
+  animation: clockGlow 2s ease-in-out infinite alternate;
+}
+
+
+/* ================================
+   GARIS
+================================ */
+
+hr {
+  width: 90%;
+  max-width: 1000px;
+
+  height: 1px;
+  margin: 18px auto;
+
+  border: none;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      #777777,
+      #ffffff,
+      #777777,
+      transparent
+    );
+
+  box-shadow:
+    0 0 8px rgba(255,255,255,0.4);
+}
+
+
+/* ================================
+   JUDUL BAGIAN
+================================ */
+
+h3 {
+  display: inline-block;
+
+  margin: 12px auto;
+  padding: 9px 22px;
+
+  color: #ffffff;
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid #666666;
+  border-left: 3px solid #ffffff;
+  border-right: 3px solid #ffffff;
+
+  border-radius: 8px;
+
+  font-size: 18px;
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 0 7px rgba(255,255,255,0.5);
+
+  box-shadow:
+    0 0 12px rgba(255,255,255,0.08);
+
+  animation: fadeUp 1s ease;
+}
+
+
+/* ================================
+   TOTAL MURID
+================================ */
+
+h3 + p {
+  display: inline-block;
+
+  min-width: 65px;
+
+  margin: 5px auto 10px;
+  padding: 10px 18px;
+
+  color: #000000;
+  background: #ffffff;
+
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+
+  font-size: 21px;
+  font-weight: bold;
+
+  box-shadow:
+    0 0 15px rgba(255,255,255,0.3);
+}
+
+
+/* ================================
+   DAFTAR SISWA
+================================ */
+
+h5 {
+  display: inline-block;
+
+  margin: 20px auto;
+
+  padding: 10px 20px;
+
+  color: #ffffff;
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid #777777;
+  border-radius: 8px;
+
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  box-shadow:
+    0 0 15px rgba(255,255,255,0.08);
+}
+
+
+/* ================================
+   FOTO
+================================ */
+
+img {
+  display: block;
+
+  width: 150px;
+  height: 180px;
+
+  margin: 14px auto 7px;
+
+  padding: 4px;
+
+  object-fit: cover;
+
+  background: #0b0b0b;
+
+  border: 2px solid #555555;
+  border-radius: 15px;
+
+  filter: none;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.7);
+
+  transition:
+    transform 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+
+/* ================================
+   EFEK FOTO
+================================ */
+
+img:hover {
+  transform:
+    translateY(-8px)
+    scale(1.05);
+
+  border-color: #ffffff;
+
+  box-shadow:
+    0 0 8px #ffffff,
+    0 0 20px rgba(255,255,255,0.8),
+    0 0 45px rgba(255,255,255,0.25);
+
+  position: relative;
+  z-index: 10;
+}
+
+
+/* ================================
+   NAMA
+================================ */
+
+img + p {
+  display: inline-block;
+
+  min-width: 100px;
+
+  margin: 0 auto 15px;
+
+  padding: 8px 14px;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0b0b0b,
+      #1b1b1b
+    );
+
+  border: 1px solid #666666;
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 0 5px rgba(255,255,255,0.5);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.5);
+}
+
+
+/* ================================
+   LINK
+================================ */
+
+a {
+  display: inline-block;
+
+  min-width: 120px;
+
+  margin: 8px;
+  padding: 11px 20px;
+
+  color: #ffffff;
+  background: #111111;
+
+  border: 1px solid #777777;
+  border-radius: 9px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  transition: 0.35s ease;
+}
+
+a:hover {
+  color: #000000;
+  background: #ffffff;
+
+  border-color: #ffffff;
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 10px #ffffff,
+    0 0 25px rgba(255,255,255,0.5);
+}
+
+
+/* ================================
+   EMAIL
+================================ */
+
+small {
+  display: inline-block;
+
+  margin: 10px auto 20px;
+  padding: 8px 15px;
+
+  color: #aaaaaa;
+
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid #444444;
+  border-radius: 7px;
+
+  font-size: 12px;
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555555;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+
+/* ================================
+   ANIMASI
+================================ */
+
+@keyframes backgroundMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes lightMove {
+  0% {
+    transform: translate(0,0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(120px,90px) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(0,0) rotate(360deg);
+  }
+}
+
+@keyframes lightMove2 {
+  0% {
+    transform: translate(0,0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-100px,-80px) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(0,0) rotate(360deg);
+  }
+}
+
+@keyframes titleShow {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes clockGlow {
+  from {
+    box-shadow:
+      0 0 8px rgba(255,255,255,0.1);
+  }
+
+  to {
+    box-shadow:
+      0 0 22px rgba(255,255,255,0.35);
+  }
+}
+
+
+/* ================================
+   HP
+================================ */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 15px 8px;
+  }
+
+  h1 {
+    font-size: 23px;
+    padding: 15px 20px;
+    letter-spacing: 2px;
+  }
+
+  #jam {
+    font-size: 18px;
+    padding: 9px 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  img {
+    width: 145px;
+    height: 175px;
+  }
+
+  img + p {
+    font-size: 14px;
+  }
+
+  a {
+    min-width: 110px;
+    padding: 10px 14px;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<h1>ANGGOTA KELAS</h1>
+
+<br>
+
+<hr>
+
+<div id="jam"></div>
+
+<script>
+function tampilkanJam() {
+  const waktu = new Date();
+
+  let jam = String(waktu.getHours()).padStart(2, "0");
+  let menit = String(waktu.getMinutes()).padStart(2, "0");
+  let detik = String(waktu.getSeconds()).padStart(2, "0");
+
+  document.getElementById("jam").innerHTML =
+    jam + ":" + menit + ":" + detik;
+}
+
+setInterval(tampilkanJam, 1000);
+tampilkanJam();
+</script>
+
+<hr>
+
+<h3>TOTAL MURID</h3>
+
+<p>27</p>
+
+<hr>
+
+<br>
+
+<h3>WALI KELAS</h3>
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-ad4ce8c9-23a7-4499-aa49-3d24afa9ce90.jpg">
+
+<hr>
+
+<h5>DAFTAR SISWA DAN SISWI</h5>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-b1722d69-9eb3-4372-8041-f131231cd44c.jpg">
+<p>Fadlan</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-27-4d6a4bae-6001-4c07-bdb9-ce5bff3694c6.jpg">
+<p>Muhaimin</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-ce2ee112-2072-4916-95f2-d0f5ddfa3928.jpg">
+<p>Ilham</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-45f1aebc-8354-4c5d-b408-6b79de3ebcc1.jpg">
+<p>Leo</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-303f8708-ff59-49a7-82ac-5c05a9cf79ec.jpg">
+<p>Diego</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-0772de9d-4d49-4d4a-81c4-dce705a73ff6.jpg">
+<p>Fahri</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-275fa4bf-1484-4abb-b955-76f98ec80f9f.jpg">
+<p>Azka</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-197fff1f-fdf7-4583-ab09-249049a9e0d8.jpg">
+<p>Ali</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-5a16cc09-4efb-4423-b931-a95182ad0c28.jpg">
+<p>Bihin</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-e842eb3a-ff36-417d-8843-133879bed2c9.jpg">
+<p>Rio</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-27-da9ade5c-65b6-403f-91e0-dfb25271e617.jpg">
+<p>Fahkru</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-27-2f9af662-e7be-4a42-bbd8-e4b29c8e02cc.jpg">
+<p>Rivai</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-27-2f9af662-e7be-4a42-bbd8-e4b29c8e02cc.jpg">
+<p>Alan</p>
+
+<hr>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-f84a9258-79aa-4f92-954f-5ec442bd8263.jpg">
+<p>Yara</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-38a0613b-5900-4e99-b6ef-1dea7247a4ec.jpg">
+<p>Tia</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-d66d8764-e10a-4f66-b07a-947a98e32017.jpg">
+<p>Zulfiama</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-7f27f3b5-446c-4eab-a0b8-baf1a4319d09.jpg">
+<p>Citra</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-16d686ad-ab8e-4c1b-b29f-1a54423c4283.jpg">
+<p>Mayang</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-27-c5671cba-308d-47f3-9f2d-9bb34fe39be5.jpg">
+<p>Fadilah</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-a95d4525-1304-497e-9afe-e351571c3eac.jpg">
+<p>Ma'rifatul</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-b55270b1-87cc-48a6-9e48-0577da5a5940.jpg">
+<p>Mutingatur</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-e50eadda-1945-4753-ad71-45de6ea1f4e0.jpg">
+<p>Jasmine</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-10be388d-ca93-40ce-9603-cde0b1f541ca.jpg">
+<p>Reisha</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-27-8bed5bee-bd8e-4f84-a525-83be8bb9c519.jpg">
+<p>Dayang</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-a9070062-6fe1-4c33-997d-8fc48349cc85.jpg">
+<p>Sintha</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-29-6d7be47c-4981-4e17-982b-64c78a5e580b.jpg">
+<p>Rinjani</p>
+
+
+<img src="https://cdn.phototourl.com/member/2026-09-27-85a8e80c-8d2c-47ff-b5a4-fae62a702d85.jpg">
+<p>Dwi</p>
+
+
+<hr>
+
+<a href="MOMEN.html">Selanjutnya</a>
+
+<br>
+
+<a href="9B.html">Kembali</a>
+
+<hr>
+
+<small>azkafaiqr55@gmail.com</small>
+
+</body>
+</html>
